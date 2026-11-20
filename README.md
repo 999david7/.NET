@@ -1,6 +1,6 @@
 # DWI website
 
-Open `index.html` in your browser. `software.html` lists the apps by category and lets visitors filter by sub-brand. All 12 apps have a standalone product page with an overview, features, and downloads. Freo and Cloudy also have screenshots from their project documentation.
+Open `index.html` in your browser. `software.html` lists the apps by category and lets visitors filter by sub-brand. All 12 apps have a standalone product page in `Products/` with an overview, features, and downloads. Shared styles, scripts, assets, and installers stay in their existing locations. Freo and Cloudy also have screenshots from their project documentation.
 
 The directory groups Freo and Melora under DWI; Quill, Times, LBrowser, Keepy, Cloudy, Ghosty, and Calcium under Replace Big Tech Apps; and Wired Paper, Wired Grid, and Wired Slides under Wired Office. The sub-brand labels follow repository owners. The homepage shows four featured apps and links to the full directory.
 

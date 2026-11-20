@@ -131,7 +131,7 @@ def download_section(product, repo, release):
             return (
                 f'<div class="release-list" aria-label="{name} downloads">\n'
                 f'<div class="release-item"><div><strong>{escape(label)}</strong><small>DMG installer · {size}</small></div>'
-                f'<a class="button button-primary" href="{escape(url)}" download>Download {name} ↓</a></div>\n</div>'
+                f'<a class="button button-primary" href="../{escape(url)}" download>Download {name} ↓</a></div>\n</div>'
                 '<p class="download-note">Open the DMG and drag the app into Applications. '
                 'Apple has not notarized this build.</p>'
             )
@@ -215,7 +215,7 @@ def main():
         if count != 1:
             raise ValueError(f"Missing or duplicate download markers for {product}")
         content = download_section(product, repo, release)
-        path = ROOT / f"{product}.html"
+        path = ROOT / "Products" / f"{product}.html"
         page = path.read_text()
         pattern = r'<div class="release-list"[^>]*>.*?<p class="download-note">.*?</p>'
         updated, count = re.subn(pattern, lambda match: content, page, count=1, flags=re.S)
