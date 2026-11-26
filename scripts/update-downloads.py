@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 REPOSITORIES = {
     "freo": "999david7/freo",
+    "solidwork": "DWI-INC/SolidWork",
     "melora": "999david7/Melora",
     "quill": "Replace-Big-Tech-Apps/Quill",
     "times": "Replace-Big-Tech-Apps/Times",
@@ -29,6 +30,8 @@ LOCAL_INSTALLERS = {
     "ghosty": ("Ghosty-1.0.dmg", "macOS 13+ · Apple silicon and Intel"),
 }
 PLATFORMS = ("macOS", "Windows", "Linux")
+# Products that keep a GitHub link instead of failing when no release is published.
+RELEASE_PENDING_OK = {"freo": "Freo", "solidwork": "SolidWork"}
 
 
 def describe(product, filename):
@@ -135,6 +138,11 @@ def download_section(product, repo, release):
                 '<p class="download-note">Open the DMG and drag the app into Applications. '
                 'Apple has not notarized this build.</p>'
             )
+        if product in RELEASE_PENDING_OK:
+            return (f'<div class="release-list" aria-label="{name} downloads"><p class="release-empty">'
+                    'No installer release is available yet.</p></div>'
+                    f'<p class="download-note"><a href="https://github.com/{repo}">View {name} on GitHub ↗</a> · '
+                    f'<a href="https://github.com/{repo}/releases">Releases and downloads ↗</a></p>')
         raise ValueError(f"No installable downloads found for {repo}")
     content = []
     for platform, architectures in platforms.items():
@@ -165,7 +173,7 @@ def latest_release(product, repo, headers):
         with urllib.request.urlopen(request, timeout=30) as response:
             return json.load(response)
     except urllib.error.HTTPError as error:
-        if error.code != 404 or product not in LOCAL_INSTALLERS:
+        if error.code != 404 or (product not in LOCAL_INSTALLERS and product not in RELEASE_PENDING_OK):
             raise
         return None
 
@@ -185,12 +193,16 @@ def directory_downloads(product, repo, release):
             f'<li><a class="text-link" href="{escape(url)}" download>'
             f'{escape(label)} · DMG ↓</a> <small>{size}</small></li>'
         )
+    elif product in RELEASE_PENDING_OK:
+        rows.append(f'<li>No installer release is available yet. <a class="text-link" href="https://github.com/{repo}/releases">View releases ↗</a></li>')
     else:
         raise ValueError(f"No installable downloads found for {repo}")
 
     name = product_name(repo)
     downloads = "\n".join(rows)
-    note = "" if assets else '<small class="directory-download-note">Local build. Apple has not notarized this installer.</small>\n'
+    note = "" if assets or product not in LOCAL_INSTALLERS else '<small class="directory-download-note">Local build. Apple has not notarized this installer.</small>\n'
+    if product in RELEASE_PENDING_OK:
+        note += f'<small class="directory-download-note"><a class="text-link" href="https://github.com/{repo}">View {RELEASE_PENDING_OK[product]} on GitHub ↗</a></small>\n'
     return (
         f'<details class="directory-downloads" name="software-downloads">\n'
         f'<summary aria-label="Downloads for {name}">Downloads</summary>\n<ul>\n{downloads}\n</ul>\n'

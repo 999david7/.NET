@@ -31,29 +31,3 @@ document.querySelectorAll("img[data-logo]").forEach(img => {
   if (img.complete) loaded();
   else img.addEventListener("load", loaded, { once: true });
 });
-
-const categoryFilter = document.getElementById("category-filter");
-const brandFilter = document.getElementById("brand-filter");
-if (categoryFilter && brandFilter) {
-  const groups = [...document.querySelectorAll(".directory-group")];
-  const count = document.getElementById("directory-count");
-  const empty = document.getElementById("directory-empty");
-  function filterSoftware() {
-    let visible = 0;
-    groups.forEach(group => {
-      const categoryMatches = categoryFilter.value === "all" || group.dataset.category === categoryFilter.value;
-      let groupVisible = false;
-      group.querySelectorAll(".directory-card").forEach(card => {
-        const show = categoryMatches && (brandFilter.value === "all" || card.dataset.brand === brandFilter.value);
-        card.hidden = !show;
-        if (show) { groupVisible = true; visible++; }
-      });
-      group.hidden = !groupVisible;
-    });
-    count.textContent = `${visible} ${visible === 1 ? "app" : "apps"}`;
-    empty.hidden = visible !== 0;
-  }
-  categoryFilter.addEventListener("change", filterSoftware);
-  brandFilter.addEventListener("change", filterSoftware);
-  filterSoftware();
-}

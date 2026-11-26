@@ -1,0 +1,83 @@
+.hardware-hero {
+    padding-block:82px 62px;
+}
+
+.hardware-hero h1 {
+    font-size:clamp(52px,7vw,84px);
+    line-height:1.08;
+    letter-spacing:-.06em;
+    margin:22px 0;
+}
+
+.hardware-hero .hero-copy {
+    margin-bottom:0;
+}
+
+.hardware-projects {
+    padding-bottom:100px;
+}
+
+.hardware-card {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);
+    border:1px solid var(--rule);
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.hardware-project-mark {
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:32px;
+    padding:38px;
+    color:#fff;
+    background:#222a33;
+}
+
+.hardware-project-mark>span {
+    font-size:11px;
+    letter-spacing:.16em;
+}
+
+.hardware-project-mark strong {
+    font-size:clamp(90px,12vw,160px);
+    font-weight:600;
+    letter-spacing:-.08em;
+    line-height:1;
+}
+
+.hardware-project-copy {
+    padding:48px;
+}
+
+.hardware-project-copy h3 {
+    margin:18px 0;
+    font-size:clamp(30px,4vw,44px);
+    letter-spacing:-.045em;
+}
+
+.hardware-project-copy>p:not(.section-kicker) {
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.75;
+}
+
+.hardware-project-copy .hardware-project-note {
+    font-size:14px;
+    margin-bottom:28px;
+}
+
+.nav a[aria-current="page"] {
+    color:var(--ink);
+    text-decoration:underline;
+    text-underline-offset:6px;
+}
+
+@media(max-width:700px) {
+    .hardware-card { grid-template-columns:1fr; }
+    .hardware-project-mark { min-height:260px; padding:28px; }
+    .hardware-project-copy { padding:28px; }
+    .hardware-hero { padding-block:60px 42px; }
+    .hardware-projects { padding-bottom:64px; }
+}

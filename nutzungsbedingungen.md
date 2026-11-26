@@ -15,7 +15,7 @@ Verantwortlicher Anbieter:
 **[Ladungsfähige Anschrift]**  
 **[Kontakt-E-Mail-Adresse]**
 
-Diese Hinweise betreffen die Website dwi-inc.net sowie die dort veröffentlichten kostenlosen Softwareanwendungen, insbesondere Freo, Quill und weitere Projekte, soweit keine abweichenden Bedingungen angegeben sind.
+Diese Hinweise betreffen die Website dwi-inc.net sowie die dort veröffentlichten kostenlosen Softwareanwendungen, insbesondere Freo, SolidWork, Quill und weitere Projekte, soweit keine abweichenden Bedingungen angegeben sind.
 
 Für einzelne Softwareprojekte gelten vorrangig die jeweils zugehörigen Open-Source-Lizenzen. Zwingende gesetzliche Rechte bleiben unberührt.
 
@@ -58,7 +58,7 @@ Diese Hinweise begründen keine Einschränkung gesetzlich zwingender Haftungsans
 
 ## § 5 — Technische Berechnungen und sicherheitskritische Anwendungen
 
-Einzelne DWI-Anwendungen, insbesondere Freo, können Funktionen zur technischen Konstruktion, geometrischen Modellierung, Simulation, Berechnung und Erstellung von Fertigungsdaten enthalten.
+Einzelne DWI-Anwendungen, insbesondere Freo und SolidWork, können Funktionen zur technischen Konstruktion, geometrischen Modellierung, Simulation, Berechnung und Erstellung von Fertigungsdaten enthalten.
 
 Ergebnisse solcher Anwendungen können unvollständig, ungenau oder fehlerhaft sein.
 
@@ -72,7 +72,7 @@ Zwingende gesetzliche Pflichten und Haftungsbestimmungen bleiben davon unberühr
 
 Die Nutzungs-, Vervielfältigungs-, Änderungs- und Weitergaberechte an den Softwareanwendungen ergeben sich aus den jeweils veröffentlichten Lizenztexten.
 
-Für Freo gilt die im offiziellen Repository veröffentlichte MIT-Lizenz.
+Für Freo und SolidWork gilt die im jeweiligen offiziellen Repository veröffentlichte MIT-Lizenz.
 
 Für andere Softwareprojekte ist die jeweilige projektbezogene Lizenz maßgeblich.
 
